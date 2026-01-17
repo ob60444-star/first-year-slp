@@ -154,6 +154,33 @@ footer {
 /* ANIMATIONS */
 @keyframes fadeDown { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);} }
 @keyframes slideUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    /* حركة الكروت عند المرور عليها */
+.card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Overlay متحرك على الكرت */
+.card::after {
+  content: "اضغط لعرض المحاضرات";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #5b6cff, #8f9bff);
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+.card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
@@ -364,4 +391,5 @@ loginBtn.addEventListener("click", () => {
     }
 });
 </script>
+
 </html>
